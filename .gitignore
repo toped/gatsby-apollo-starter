@@ -69,3 +69,4 @@ yarn-error.log
 .yarn-integrity
 
 src/apollo/config.js
+yarn.lock
