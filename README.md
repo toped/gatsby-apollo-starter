@@ -16,14 +16,16 @@ Starter repository for a Gatsby site communicating with a GraphQL backend. This 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9559c0c2-f703-4634-9e00-6276b85c63b3/deploy-status)](https://app.netlify.com/sites/adoring-hermann-2c2883/deploys)
 
 **DEMO:**
+
 Netlify: [https://adoring-hermann-2c2883.netlify.app](https://adoring-hermann-2c2883.netlify.app/)
+
 Zeit: [https://gatsby-apollo-starter.now.sh](https://gatsby-apollo-starter.now.sh/)
 
 # Run locally
 
 1. **Install the Gatsby CLI**
 
-   ```shell
+   ```sh
    npm install -g gatsby-cli
 
 2. **Create the project**
