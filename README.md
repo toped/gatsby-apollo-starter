@@ -28,26 +28,26 @@ Zeit: [https://gatsby-apollo-starter.now.sh](https://gatsby-apollo-starter.now.s
 
 2. **Create the project**
 
-```sh
-gatsby new gatsby-starter https://github.com/toped/gatsby-apollo-starter
-```
+    ```sh
+    gatsby new gatsby-starter https://github.com/toped/gatsby-apollo-starter
+    ```
 
 3. **Change into the new directory**
 
-```sh
-cd gatsby-starter
-```
+    ```sh
+    cd gatsby-starter
+    ```
 
 4. **Install dependencies (if gatsby-cli has not already)**
 
-```sh
-yarn
-# or
-npm i
-```
+    ```sh
+    yarn
+    # or
+    npm i
+    ```
 
 5. **Then you can run it by:**
 
-```sh
-gatsby develop
-```
+    ```sh
+    gatsby develop
+    ```
