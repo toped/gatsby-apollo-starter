@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Position, Popover, Menu, Button, MenuIcon } from 'evergreen-ui'
+import { Position, Popover, Menu, Button } from 'evergreen-ui'
 import { Link } from 'gatsby'
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub, AiOutlineMenu } from 'react-icons/ai'
 import { DiOpensource } from 'react-icons/di'
 
 const TopBar = styled.div`
@@ -144,7 +144,7 @@ const Navigation = () => {
 						</Menu>
 					}
 				>
-					<MenuButton><MenuIcon/></MenuButton>
+					<MenuButton><AiOutlineMenu size={20}/></MenuButton>
 				</Popover>
 			</TopBarNavRight>
 		</TopBar>
