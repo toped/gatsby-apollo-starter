@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Position, Popover, Menu, Button, MenuIcon } from 'evergreen-ui'
 import { Link } from 'gatsby'
 import { AiFillGithub } from 'react-icons/ai'
 import { DiOpensource } from 'react-icons/di'
@@ -30,13 +31,9 @@ const TopBarNav = styled.nav`
   text-size-adjust:100%;
 `
 
-const TopBarNavRight = styled.div`
-  align-items:center;
-  color:rgb(67, 90, 111);
-  display:flex;
-  height:32px;
-  line-height:16px;
-  text-size-adjust:100%;
+const MenuButton = styled(Button)`
+  background: none !important;
+  box-shadow: none !important;
 `
 
 const TopBarLink = styled(Link)`
@@ -95,6 +92,30 @@ const TopBarLinkExternal = styled.a`
   }
 `
 
+const TopBarNavRight = styled.div`
+  align-items:center;
+  color:rgb(67, 90, 111);
+  display:flex;
+  height:32px;
+  line-height:16px;
+  text-size-adjust:100%;
+
+  ${TopBarLink}, ${TopBarLinkExternal} {
+      display: none !important;
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) { 
+    ${MenuButton} {
+      display: none !important;
+    }
+
+    ${TopBarLink}, ${TopBarLinkExternal} {
+      display: flex !important;
+  }
+  }
+`
+
 const TopBarFocus = styled(TopBarLink)`
   color:rgb(0, 0, 0) !important;
 `
@@ -108,6 +129,23 @@ const Navigation = () => {
 			<TopBarNavRight>
 				<TopBarLink to="/examples"><DiOpensource/>Example API</TopBarLink>
 				<TopBarLinkExternal href="https://github.com/toped/gatsby-apollo-starter"><AiFillGithub/>GitHub</TopBarLinkExternal>
+				<Popover
+					position={Position.BOTTOM_LEFT}
+					content={
+						<Menu>
+							<Menu.Group>
+								<Menu.Item>				
+									<TopBarLink to="/examples"><DiOpensource/>Example API</TopBarLink>
+								</Menu.Item>
+								<Menu.Item>				
+									<TopBarLinkExternal href="https://github.com/toped/gatsby-apollo-starter"><AiFillGithub/>GitHub</TopBarLinkExternal>
+								</Menu.Item>
+							</Menu.Group>
+						</Menu>
+					}
+				>
+					<MenuButton><MenuIcon/></MenuButton>
+				</Popover>
 			</TopBarNavRight>
 		</TopBar>
 	)

@@ -3,6 +3,7 @@
 Starter repository for a Gatsby site communicating with a GraphQL backend. This project uses Apollo Client to request and cache your data, as well as update your UI. 
 
 <br/>
+<br/>
 <a href="https://gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
 </a><a href="https://graphql.org/">
