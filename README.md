@@ -15,7 +15,7 @@ Starter repository for a Gatsby site communicating with a GraphQL backend. This 
 <br/>
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9559c0c2-f703-4634-9e00-6276b85c63b3/deploy-status)](https://app.netlify.com/sites/adoring-hermann-2c2883/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9739e880-53c6-4ca1-96fc-3495946ad38b/deploy-status)](https://app.netlify.com/sites/cranky-elion-d06f2c/deploys)
 
 **DEMO:**
 
