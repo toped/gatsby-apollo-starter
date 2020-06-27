@@ -10,11 +10,13 @@
         "apollo-cache-inmemory": "^1.6.5",
         "apollo-client": "^2.6.8",
         "apollo-link-http": "^1.5.16",
+        "apollo-server-express": "^2.15.0",
         "babel-plugin-styled-components": "^1.10.6",
         "bootstrap": "^4.4.1",
         "eslint": "^6.7.2",
         "evergreen-ui": "^4.26.0",
         "gatsby": "^2.18.12",
+        "gatsby-cli": "^2.12.51",
         "gatsby-image": "^2.2.34",
         "gatsby-plugin-google-analytics": "^2.1.35",
         "gatsby-plugin-manifest": "^2.2.31",
@@ -42,6 +44,8 @@
         "typography": "^0.16.19"
     },
     "devDependencies": {
+        "concurrently": "^5.2.0",
+        "nodemon": "^2.0.2",
         "prettier": "^1.19.1"
     },
     "keywords": [
@@ -49,13 +53,13 @@
     ],
     "license": "MIT",
     "scripts": {
+        "dev": "concurrently -k \"nodemon --quiet server\" \"gatsby develop\"",
         "build": "gatsby build",
-        "develop": "gatsby develop",
-        "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-        "start": "npm run develop",
+        "start": "node server",
         "serve": "gatsby serve",
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+        "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
         "lint": "node_modules/eslint/bin/eslint.js src --fix"
     },
     "repository": {
