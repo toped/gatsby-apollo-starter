@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { client } from './client'
-import Layout from '../Layout/Layout'
+import ThemeController from '../Layout/ThemeController'
 
 export const wrapRootElement = ({ element }) => (
 	<ApolloProvider client={client}>
-		<Layout>{element}</Layout>
+		<ThemeController>
+			{element}
+		</ThemeController>
 	</ApolloProvider>
 )
 
