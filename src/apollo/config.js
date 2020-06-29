@@ -1,4 +1,4 @@
 export default {
-	production: 'http://localhost:4000/graphql/',
-	development: 'http://localhost:4000/graphql/'
+	production: `${process.env.GATSBY_URL}/graphql`,
+	development: `${process.env.GATSBY_URL}/graphql`
 }

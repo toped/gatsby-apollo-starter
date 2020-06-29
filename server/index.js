@@ -18,7 +18,7 @@ const app = express()
 
 //  when in development update cors access 
 //  since dev ui runs on port 8000 and server runs on port 4000
-if(process.env.NODE_ENV !== 'development') {
+if(process.env.NODE_ENV === 'development') {
 	app.use(cors({
 		origin: true
 	}))

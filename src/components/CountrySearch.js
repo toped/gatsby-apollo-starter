@@ -4,6 +4,7 @@ import { Typography } from '../components/primitives'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import CountryDialog from './CountryDialog'
+import config from '../apollo/config'
 
 const SearchContainer = styled.div`
 	display: flex;
@@ -42,11 +43,15 @@ const CountrySearch = ({countryData}) => {
 				/>
 			</SearchContainer>
 			<Pane display="flex">
-				<GraphQlButton appearance="primary" marginRight=".5rem">
-					<a href="http://localhost:4000/graphql">
+				{
+					process.env.GATSBY_NODE_ENV !== 'production'
+						? <GraphQlButton appearance="primary" marginRight=".5rem">
+							<a href={`${config[process.env.GATSBY_NODE_ENV]}/graphql`}>
 						Explore using GraphQL Playground!
-					</a>
-				</GraphQlButton>
+							</a>
+						</GraphQlButton>
+						:null
+				}
 			</Pane>
 			<CountryDialog 
 				showDialog={showDialog} 
