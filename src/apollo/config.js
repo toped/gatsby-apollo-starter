@@ -1,4 +1,4 @@
 export default {
-	production: 'https://countries.trevorblades.com/',
-	development: 'https://countries.trevorblades.com/'
+	production: 'http://localhost:4000/graphql/',
+	development: 'http://localhost:4000/graphql/'
 }
