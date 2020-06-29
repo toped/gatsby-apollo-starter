@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'evergreen-ui'
 import { Typography } from '../components/primitives'
+import { ThemeProvider } from '../Layout'
 import GatsbyIcon from '../assets/img/svgs/gatsby.svg'
 import GraphQLIcon from '../assets/img/svgs/graphql.svg'
 import ApolloIcon from '../assets/img/svgs/apollo.svg'
+import ApolloLightIcon from '../assets/img/svgs/apollo-light.svg'
 
 const HomePageWrapper = styled.div`
 	height: 100%;
@@ -63,6 +65,9 @@ const Plus = styled(Typography)`
 `
 
 export const Home = () => {
+	const { theme: themeCtx } = useContext(ThemeProvider.Context)
+	const [theme] = themeCtx
+
 	return (
 		<HomePageWrapper>
 			<StarterDescription weight="light">
@@ -76,7 +81,7 @@ export const Home = () => {
 				<Plus />
 				<GraphQLIcon height={36} />
 				<Plus />
-				<ApolloIcon height={36} />
+				{theme === 'light' ? <ApolloIcon height={36} /> : <ApolloLightIcon height={36}/>}
 			</Icons>
 		</HomePageWrapper>
 	)
