@@ -6,5 +6,7 @@
 
 // You can delete this file if you're not using it
 import './src/assets/css/globals.css'
-import './node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './src/assets/css/normalize.css'
+import './node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
+import './node_modules/@blueprintjs/core/lib/css/blueprint.css'
 export { wrapRootElement } from './src/apollo/wrap-root-element'

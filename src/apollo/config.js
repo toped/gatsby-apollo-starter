@@ -1,4 +1,5 @@
 export default {
-	production: 'https://countries.trevorblades.com/',
-	development: 'https://countries.trevorblades.com/'
+	production: `${process.env.GATSBY_URL}/graphql`,
+	development: `${process.env.GATSBY_URL}/graphql`,
+	demo: 'https://countries.trevorblades.com/'
 }

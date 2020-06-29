@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Heading, Link } from 'evergreen-ui'
+import { Link } from 'evergreen-ui'
+import { Typography } from '../components/primitives'
+import { ThemeProvider } from '../Layout'
 import GatsbyIcon from '../assets/img/svgs/gatsby.svg'
 import GraphQLIcon from '../assets/img/svgs/graphql.svg'
 import ApolloIcon from '../assets/img/svgs/apollo.svg'
+import ApolloLightIcon from '../assets/img/svgs/apollo-light.svg'
 
 const HomePageWrapper = styled.div`
 	height: 100%;
@@ -13,12 +16,9 @@ const HomePageWrapper = styled.div`
 	align-items: flex-start;
 	margin: 0 10%;
 `
-
-const StarterDescription = styled(Heading)`
+const StarterDescription = styled(Typography)`
 	display:block !important;
 	font-size:3rem !important;
-	font-style:normal !important;
-	font-weight:300 !important;
 	line-height: inherit !important;
 	width:100% !important;
 
@@ -27,26 +27,26 @@ const StarterDescription = styled(Heading)`
 		width:50% !important;
  	}
 
-	span:first-child {
+	p:first-of-type {
+		display: inline;
 		color: rgba(109, 79, 152, .7) !important;
 		font-weight: bold;
 	}
 
-	span:nth-child(2) {
+	p:nth-of-type(2) {
+		display: inline;
 		color: rgba(239, 53, 171, .7) !important;
 		font-weight: bold;
 	}
 
 `
-
 const Icons = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	margin: 10px 0;
 `
-
-const Author = styled.div`
+const Author = styled(Typography)`
 	font-size: 24px;
 	margin: 25px 0;
 
@@ -56,8 +56,7 @@ const Author = styled.div`
 		text-decoration: none;
 	}
 `
-
-const Plus = styled.div`
+const Plus = styled(Typography)`
 	&::after {
 		content: '+';
 		font-size: 16px;
@@ -65,21 +64,25 @@ const Plus = styled.div`
 	}
 `
 
-const Home = () => {
+export const Home = () => {
+	const { theme: themeCtx } = useContext(ThemeProvider.Context)
+	const [theme] = themeCtx
+
 	return (
 		<HomePageWrapper>
-			<StarterDescription>
-					An opinionated <span>gatsby starter</span> with <span>apollo graphql</span> integration. Happy coding! 
-				<Author>created by <Link href="https://topedaramola.com">toped</Link></Author>
+			<StarterDescription weight="light">
+					An opinionated <p>gatsby starter</p> with <p>apollo graphql</p> integration. Happy coding! 
+				<div>
+					<Author>created by <Link href="https://topedaramola.com">toped</Link></Author>
+				</div>
 			</StarterDescription>
 			<Icons>
 				<GatsbyIcon height={36} />
 				<Plus />
 				<GraphQLIcon height={36} />
 				<Plus />
-				<ApolloIcon height={36} />
+				{theme === 'light' ? <ApolloIcon height={36} /> : <ApolloLightIcon height={36}/>}
 			</Icons>
-			{/* <Author>Gatsby Starter by <a href="https://topedaramola.com">toped</a></Author> */}
 		</HomePageWrapper>
 	)
 }

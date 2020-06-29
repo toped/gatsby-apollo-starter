@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { Pane, Button, Combobox } from 'evergreen-ui'
+import { Typography } from '../components/primitives'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Pane, Heading, Text, Combobox, Button, Spinner } from 'evergreen-ui'
 import CountryDialog from './CountryDialog'
-import { GET_COUNTRIES } from '../graphql/quries'
+import config from '../apollo/config'
 
 const SearchContainer = styled.div`
 	display: flex;
@@ -15,49 +16,42 @@ const SearchContainer = styled.div`
 		width: 50%;
  	}
 `
+const GraphQlButton = styled(Button)`
+	a {
+		color: ${({theme}) => theme.trueWhite};
+	}
+`
 
-const CountrySearch = () => {
-
-	const { loading, error, data } = useQuery(GET_COUNTRIES, {
-		onCompleted: () => {
-			console.log(data)
-			
-		}
-	})
+const CountrySearch = ({countryData}) => {
 
 	const [showDialog, setShowDialog] = useState(false)
 	const [selectedCountry, setSelectedCountry] = useState({})
-	
-	if (error) return (
-		<Pane display="flex" flexDirection="column" width="100vw" paddingY="10rem" justifyContent="center" alignItems="center">
-			<Heading fontSize={24}>Error contacting demo API</Heading>
-			<Text marginY=".5rem">Sorry for the inconvenience. Please try again later.</Text>
-		</Pane>
-	)
-
-	if (loading) return (
-		<Pane display="flex" flexDirection="column" width="100vw" paddingY="10rem" justifyContent="center" alignItems="center">
-			<Spinner/>
-		</Pane>
-	)
 
 	return (
 		<Pane display="flex" flexDirection="column" width="100vw" paddingY="10rem" justifyContent="center" alignItems="center">
-			<Heading fontSize={24}>Explore Countries</Heading>
-			<Text marginY=".5rem">🌎 Public GraphQL API for information about countries</Text>
+			<Typography variant="h5">Explore Countries</Typography>
+			<Typography className="my-2" variant="body">🌎 Public GraphQL API for information about countries</Typography>
 			<SearchContainer>
 				<Combobox
 					placeholder="Select a country to learn more..."
 					width="100%"
 					initialSelectedItem={null}
-					items={data.countries}
+					items={ countryData && countryData.countries}
 					itemToString={item => item ? item.name : ''}
 					onChange={selectedItem => {setShowDialog(true); setSelectedCountry(selectedItem)}}
 					autocompleteProps={{popoverMinWidth:50}}
 				/>
 			</SearchContainer>
 			<Pane display="flex">
-				<Button appearance="primary" marginRight=".5rem">Explore using GraphQL Playground!</Button>
+				{
+					process.env.GATSBY_NODE_ENV !== 'production'
+						? <GraphQlButton appearance="primary" marginRight=".5rem">
+							<a href={`${config[process.env.GATSBY_NODE_ENV]}/graphql`}>
+						Explore using GraphQL Playground!
+							</a>
+						</GraphQlButton>
+						:null
+				}
 			</Pane>
 			<CountryDialog 
 				showDialog={showDialog} 
@@ -66,6 +60,10 @@ const CountrySearch = () => {
 			/>
 		</Pane>
 	)
+}
+
+CountrySearch.propTypes = {
+	countryData: PropTypes.object
 }
 
 export default CountrySearch
